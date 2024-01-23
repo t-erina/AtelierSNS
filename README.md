@@ -5,8 +5,7 @@ LaravelでSNSサイトを制作しました。
 レスポンシブ対応です。
 
 # 使用技術
-Laravel 6
- - Laravel UI
+Laravel 6 (Laravel UI)
 PHP 8.0.13
 
 # 実装機能
