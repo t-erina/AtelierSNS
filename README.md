@@ -6,7 +6,7 @@ LaravelでSNSサイトを制作しました。
 
 # 使用技術
 - Laravel 6 
- - Laravel UI
+  - Laravel UI
 - PHP 8.0.13
 
 # 実装機能
