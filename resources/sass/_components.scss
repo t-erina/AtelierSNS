@@ -1,0 +1,307 @@
+// ===================
+//  USER ICON
+// ===================
+.icon {
+  .profile-icon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      height: 50px;
+      width: 50px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.profile-icon-l {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+// ===================
+//  FOLLOW BTN
+// ===================
+.follow-action {
+  width: fit-content;
+
+  .follow-btn,
+  .unfollow-btn {
+    display: none;
+
+    &.is_active {
+      display: inline-block;
+    }
+  }
+
+  .btn {
+    i {
+      display: inline-block;
+      margin-right: 5px;
+    }
+  }
+}
+
+// ===================
+//  USER LIST
+// ===================
+.c-userlist {
+  .userlist-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .username {
+      display: inline-block;
+      overflow-wrap: break-word;
+      margin-left: 30px;
+      font-weight: bold;
+    }
+
+    .actions {
+      margin-left: 25px;
+    }
+  }
+}
+
+// ===================
+//  TIME LINE
+// ===================
+.c-timeline,
+.c-comment {
+  .post-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 0;
+
+    .username {
+      display: inline-block;
+      overflow-wrap: break-word;
+      margin-left: 30px;
+      font-weight: bold;
+    }
+
+    .actions {
+      margin-left: 25px;
+
+      .post-edit-action {
+        position: relative;
+
+        .post-edit-btn {
+          border-radius: 50%;
+        }
+
+        .post-edit-list {
+          position: absolute;
+          left: 0;
+          top: 30px;
+        }
+      }
+    }
+  }
+
+  .post-body {
+    .post-image {
+      margin-bottom: 20px;
+      height: auto;
+      max-height: 400px;
+      width: inherit;
+      text-align: center;
+
+      img {
+        height: auto;
+        max-height: 400px;
+        width: 100%;
+        max-width: fit-content;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+
+    .post-body_tags {
+      margin-top: 10px;
+    }
+  }
+
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+
+    .post-info {
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    .post-action-list {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-left: -10px;
+      margin-bottom: 0;
+
+      .post-action-list_inner {
+        margin-left: 20px;
+      }
+
+      .comment-btn,
+      .repost-btn,
+      .like-action-btn {
+        font-size: 20px;
+        border-radius: 50%;
+        border: none;
+        background: none;
+        cursor: pointer;
+      }
+
+      .like-action-btn {
+        color: $red;
+      }
+
+      // like btn state style
+      %activate {
+        height: auto;
+        width: auto;
+        opacity: 1;
+        pointer-events: all;
+        position: relative;
+        z-index: auto;
+      }
+
+      %inactivate {
+        height: 0;
+        width: 0;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
+      .delete-like-btn {
+        @extend %inactivate;
+        display: block;
+        transform: scale(1);
+
+        &::after {
+          content: "";
+          display: block;
+          height: 24px;
+          width: 24px;
+          border: solid 5px $pink;
+          border-radius: 50%;
+          position: absolute;
+          top: 3px;
+          left: 4px;
+          opacity: 0;
+          transform: scale(1);
+        }
+
+        &.is_active {
+          @extend %activate;
+          animation: beat .4s ease-in-out both;
+
+          &::after {
+            animation: ring .4s ease-in-out;
+          }
+        }
+
+        &.is_paused {
+          @extend %activate;
+        }
+
+        @keyframes beat {
+          0% {
+            transform: scale(1);
+          }
+
+          25% {
+            transform: scale(.7);
+          }
+
+          50% {
+            transform: scale(1.2);
+          }
+
+          75% {
+            transform: scale(.9);
+          }
+
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        @keyframes ring {
+          0% {
+            opacity: 1;
+            transform: scale(0);
+          }
+
+          100% {
+            opacity: 0;
+            transform: scale(1.7);
+          }
+        }
+      }
+
+
+      .store-like-btn {
+        @extend %inactivate;
+        display: block;
+        transform: translateX(0);
+
+        &.is_active {
+          @extend %activate;
+          animation: shake .4s ease-in-out both;
+        }
+
+        &.is_paused {
+          @extend %activate;
+        }
+
+        @keyframes shake {
+          0% {
+            transform: translateX(0);
+          }
+
+          20% {
+            transform: translateX(3px);
+          }
+
+          40% {
+            transform: translateX(-3px);
+          }
+
+          60% {
+            transform: translateX(3px);
+          }
+
+          80% {
+            transform: translateX(-2px);
+          }
+
+          100% {
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+  }
+}
